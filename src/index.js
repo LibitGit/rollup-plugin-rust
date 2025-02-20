@@ -425,8 +425,8 @@ class State {
 
         if (this.options.nodejs) {
             prelude = `function loadFile(url) {
-                return new Promise((resolve, reject) => {
-                    require("node:fs").readFile(url, (err, data) => {
+                return new Promise(async (resolve, reject) => {
+                    (await import("node:fs")).readFile(url, (err, data) => {
                         if (err) {
                             reject(err);
 
